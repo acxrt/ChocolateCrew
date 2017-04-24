@@ -8,7 +8,7 @@
 
 import Foundation
 
-class oompaLoopma {
+class OompaLoopma {
     
     var id: Int
     var first_name: String
