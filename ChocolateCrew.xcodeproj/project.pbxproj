@@ -15,6 +15,7 @@
 		8B6C8DCB1EAE7FFE00DB0B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6C8DC91EAE7FFE00DB0B99 /* LaunchScreen.storyboard */; };
 		8B6C8DD31EAE804E00DB0B99 /* OompaLoompaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C8DD21EAE804E00DB0B99 /* OompaLoompaTableViewController.swift */; };
 		8B6C8DD61EAE821100DB0B99 /* OompaLoompaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C8DD51EAE821100DB0B99 /* OompaLoompaTableViewCell.swift */; };
+		8B6C8DFA1EAEA2A700DB0B99 /* OompaLoompa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C8DF91EAEA2A700DB0B99 /* OompaLoompa.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8B6C8DCC1EAE7FFE00DB0B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B6C8DD21EAE804E00DB0B99 /* OompaLoompaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OompaLoompaTableViewController.swift; sourceTree = "<group>"; };
 		8B6C8DD51EAE821100DB0B99 /* OompaLoompaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OompaLoompaTableViewCell.swift; sourceTree = "<group>"; };
+		8B6C8DF91EAEA2A700DB0B99 /* OompaLoompa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OompaLoompa.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		8B6C8DBC1EAE7FFE00DB0B99 /* ChocolateCrew */ = {
 			isa = PBXGroup;
 			children = (
+				8B6C8DF81EAEA29900DB0B99 /* Model */,
 				8B6C8DD41EAE81F700DB0B99 /* OompaLoompaTable */,
 				8B6C8DBD1EAE7FFE00DB0B99 /* AppDelegate.swift */,
 				8B6C8DBF1EAE7FFE00DB0B99 /* ViewController.swift */,
@@ -79,6 +82,14 @@
 				8B6C8DD51EAE821100DB0B99 /* OompaLoompaTableViewCell.swift */,
 			);
 			name = OompaLoompaTable;
+			sourceTree = "<group>";
+		};
+		8B6C8DF81EAEA29900DB0B99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B6C8DF91EAEA2A700DB0B99 /* OompaLoompa.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			files = (
 				8B6C8DD61EAE821100DB0B99 /* OompaLoompaTableViewCell.swift in Sources */,
 				8B6C8DC01EAE7FFE00DB0B99 /* ViewController.swift in Sources */,
+				8B6C8DFA1EAEA2A700DB0B99 /* OompaLoompa.swift in Sources */,
 				8B6C8DC61EAE7FFE00DB0B99 /* ChocolateCrew.xcdatamodeld in Sources */,
 				8B6C8DD31EAE804E00DB0B99 /* OompaLoompaTableViewController.swift in Sources */,
 				8B6C8DBE1EAE7FFE00DB0B99 /* AppDelegate.swift in Sources */,
@@ -317,6 +329,7 @@
 				8B6C8DD11EAE7FFE00DB0B99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
