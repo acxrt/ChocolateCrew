@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -21,6 +22,11 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         tableView.delegate = self
         tableView.dataSource = self
         
+        OompaLoompaService.allOompaLoompa(success: {
+            print("DONE")
+        }, failure: {_ in 
+            
+        })
         
     }
     
