@@ -12,7 +12,7 @@ import Alamofire
 class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var headerTitleLabel: UILabel!
     
     var oompaLoompaList = Array<Any>()
     
@@ -22,11 +22,14 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         tableView.delegate = self
         tableView.dataSource = self
         
-        OompaLoompaService.allOompaLoompa(success: {
-            print("DONE")
+        OompaLoompaService.allOompaLoompa(success: { list in
+            self.oompaLoompaList = list
+            self.tableView.reloadData()
         }, failure: {_ in 
             
         })
+        
+        headerTitleLabel.text = localizedString("oompa_loompa_table_title")
         
     }
     
@@ -40,16 +43,22 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell : OompaLoompaTableViewCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "oompaLoompaCell") as! OompaLoompaTableViewCell
+        let cell : OompaLoompaTableViewCell = tableView.dequeueReusableCell(withIdentifier: "oompaLoompaCell", for: indexPath) as! OompaLoompaTableViewCell
         
-//        cell.oLNameLabel.text = "\() \()"
-//        cell.imageView
-//        cell.oLId = 
+        let oompaLoompa: OompaLoopma  = oompaLoompaList[indexPath.row] as! OompaLoopma
+        
+        cell.oLNameLabel.text = "\(oompaLoompa.first_name) \(oompaLoompa.last_name)"
+        cell.imageView?.downloadedFrom(link: oompaLoompa.image)
+        cell.oLId = oompaLoompa.id
         
         return cell
 
     }
     
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
     
     
 }

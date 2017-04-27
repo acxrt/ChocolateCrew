@@ -13,6 +13,6 @@ class OompaLoompaTableViewCell: UITableViewCell {
     @IBOutlet weak var oLImageView: UIImageView!
     @IBOutlet weak var oLNameLabel: UILabel!
     
-    var oLId: String = ""
+    var oLId: Int = 0
     
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class OompaLoopma {
     
@@ -17,8 +18,9 @@ class OompaLoopma {
     var gender: String
     var profession: String
     var thumbnail: String
+    var image: String
     
-    init(){
+    public init(){
         id = 0
         first_name = ""
         last_name = ""
@@ -26,9 +28,10 @@ class OompaLoopma {
         gender = ""
         profession = ""
         thumbnail = ""
+        image = ""
     }
     
-    init(id: Int, first_name: String, last_name: String, email: String, gender: String, profession: String, thumbnail: String) {
+    public init(id: Int, first_name: String, last_name: String, email: String, gender: String, profession: String, thumbnail: String, image: String) {
     
         self.id = id
         self.first_name = first_name
@@ -37,7 +40,19 @@ class OompaLoopma {
         self.gender = gender
         self.profession = profession
         self.thumbnail = thumbnail
+        self.image = image
         
+    }
+    
+    public init?(json: JSON) {
+        id = Int(json["id"].intValue)
+        first_name = json["first_name"].stringValue
+        last_name = json["last_name"].stringValue
+        email = json["email"].stringValue
+        gender = json["gender"].stringValue
+        profession = json["profession"].stringValue
+        thumbnail = json["thumbnail"].stringValue
+        image = json["image"].stringValue
     }
     
 }
