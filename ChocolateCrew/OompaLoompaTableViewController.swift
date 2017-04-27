@@ -14,9 +14,12 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    
     
     var oompaLoompaList = Array<Any>()
-    var oompaLoompaAuxList = Array<Any>()
+    var oompaLoompaOriginalList = Array<Any>()
+    
     let searchBarHeight: CGFloat = 44.0
     
     override func viewDidLoad() {
@@ -27,6 +30,7 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         
         OompaLoompaService.allOompaLoompa(success: { list in
             self.oompaLoompaList = list
+            self.oompaLoompaOriginalList = list
             self.tableView.reloadData()
         }, failure: {_ in 
             
@@ -34,11 +38,33 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         
         self.navigationItem.title = localizedString("oompa_loompa_table_title")
         
+        // Search Bar
         searchBar.delegate = self
         searchBarHeightConstraint.constant = 0
         
+        // Segmented Control
+        genderSegmentedControl.setTitle(localizedString("filter_gender_both"), forSegmentAt: 0)
+        genderSegmentedControl.setTitle(localizedString("filter_gender_male"), forSegmentAt: 1)
+        genderSegmentedControl.setTitle(localizedString("filter_gender_female"), forSegmentAt: 2)
+        
+        genderSegmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        deregisterFromKeyboardNotifications()
+    }
+    
+    
+    // MARK: - TableView Delegate and DataSource methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -119,12 +145,14 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        self.oompaLoompaList = self.oompaLoompaAuxList
-        self.oompaLoompaAuxList = Array()
+        self.oompaLoompaList = self.oompaLoompaOriginalList
         
         tableView.reloadData()
         
         hideSearchBar(AndDeleteSearch: true)
+        
+        // Show gender filter
+        genderSegmentedControl.isHidden = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -138,9 +166,8 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
                     newList.append(oompaLoompa)
                 }
             }
-            let auxList = self.oompaLoompaList
             self.oompaLoompaList = newList
-            self.oompaLoompaAuxList = auxList
+            
             self.tableView.reloadData()
 
         }
@@ -163,6 +190,10 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
             self.view.layoutIfNeeded()
         }
         searchBar.becomeFirstResponder()
+        
+        // Hide gender filter
+        genderSegmentedControl.isHidden = true
+        self.oompaLoompaList = self.oompaLoompaOriginalList
     }
     
     func hideSearchBar(AndDeleteSearch delete: Bool) {
@@ -177,5 +208,75 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    // MARK: - Filter by gender
+    func selectionDidChange(_ sender: UISegmentedControl) {
+        
+        var gender: String = ""
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            gender = ""
+            
+        case 1:
+            gender = "M"
+            
+        case 2:
+            gender = "F"
+            
+        default:
+            gender = ""
+        }
+        
+        if gender != "" {
+            var newList: Array<OompaLoopma> = Array()
+            
+            for oompa in oompaLoompaOriginalList {
+                
+                if let oompaLoompa: OompaLoopma = oompa as! OompaLoopma, oompaLoompa.gender == gender {
+                    newList.append(oompaLoompa)
+                }
+            }
+            self.oompaLoompaList = newList
+            
+        }else {
+            self.oompaLoompaList = self.oompaLoompaOriginalList
+        }
+        
+        tableView.reloadData()
+    }
     
+    
+    // MARK: - Scroll when keyboard was shown/hiden
+    func registerForKeyboardNotifications(){
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
+    
+    func keyboardWasShown(notification: NSNotification){
+        
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        self.tableView.frame.size.height = self.tableView.frame.size.height - (keyboardSize?.height)!
+    
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification){
+        
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        self.tableView.frame.size.height = self.tableView.frame.size.height + (keyboardSize?.height)!
+
+    }
+
 }

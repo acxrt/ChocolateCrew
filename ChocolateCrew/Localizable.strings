@@ -7,8 +7,13 @@
 //
 
 "oompa_loompa_table_title"  = "Oompa Loompa List";
+
 "first_name"                = "First name";
 "last_name"                 = "Last name";
 "email"                     = "Email";
 "gender"                    = "Gender";
 "profession"                = "Profession";
+
+"filter_gender_both"        = "Both";
+"filter_gender_male"        = "Male";
+"filter_gender_female"      = "Female";

@@ -52,7 +52,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-hp-II6">
-                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="511"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.5" green="0.43606507091245805" blue="0.30058135709295153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="JMx-mC-woD">
@@ -100,15 +100,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Z4-PRW">
+                                <rect key="frame" x="20" y="565" width="335" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9dJ-Z4-PRW" secondAttribute="trailing" constant="20" id="18i-Ml-O21"/>
                             <constraint firstAttribute="trailing" secondItem="fz4-AB-w74" secondAttribute="trailing" id="Dl4-qa-4YW"/>
                             <constraint firstItem="ATW-hp-II6" firstAttribute="top" secondItem="fz4-AB-w74" secondAttribute="bottom" id="E3V-Ch-ab8"/>
                             <constraint firstItem="ATW-hp-II6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ENh-gV-Bzd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ATW-hp-II6" secondAttribute="bottom" id="KXn-l9-UOa"/>
+                            <constraint firstItem="9dJ-Z4-PRW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Nzu-Q5-Qed"/>
+                            <constraint firstItem="9dJ-Z4-PRW" firstAttribute="top" secondItem="ATW-hp-II6" secondAttribute="bottom" constant="10" id="S4t-t7-8vm"/>
                             <constraint firstItem="fz4-AB-w74" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XmG-bK-hQq"/>
                             <constraint firstItem="fz4-AB-w74" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fg8-61-FI9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9dJ-Z4-PRW" secondAttribute="bottom" constant="10" id="ryn-U5-ROl"/>
                             <constraint firstAttribute="trailing" secondItem="ATW-hp-II6" secondAttribute="trailing" id="u0a-3V-hUF"/>
                             <constraint firstItem="ATW-hp-II6" firstAttribute="top" secondItem="fz4-AB-w74" secondAttribute="bottom" id="ypv-Wc-h7b"/>
                         </constraints>
@@ -122,6 +133,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="genderSegmentedControl" destination="9dJ-Z4-PRW" id="HFl-S4-UJb"/>
                         <outlet property="searchBar" destination="fz4-AB-w74" id="hjP-2Z-3Os"/>
                         <outlet property="searchBarHeightConstraint" destination="HUu-Xn-f65" id="DFk-Kc-jQ1"/>
                         <outlet property="tableView" destination="ATW-hp-II6" id="wMW-22-gZ6"/>
