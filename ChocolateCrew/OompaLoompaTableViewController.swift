@@ -9,12 +9,15 @@
 import UIKit
 import Alamofire
 
-class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     
     var oompaLoompaList = Array<Any>()
+    var oompaLoompaAuxList = Array<Any>()
+    let searchBarHeight: CGFloat = 44.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,9 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         })
         
         self.navigationItem.title = localizedString("oompa_loompa_table_title")
+        
+        searchBar.delegate = self
+        searchBarHeightConstraint.constant = 0
         
     }
     
@@ -63,20 +69,17 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell: OompaLoompaTableViewCell = tableView.cellForRow(at: indexPath) as! OompaLoompaTableViewCell
+        let oompaLoompa: OompaLoopma = oompaLoompaList[indexPath.row] as! OompaLoopma
+        let details: Array<[String: String]> = createDetailsForOompaLoompa(oompaLoompa:oompaLoompa)
         
-        if cell.oLId - 1 > 0 {
-            let oompaLoompa: OompaLoopma = oompaLoompaList[cell.oLId - 1] as! OompaLoopma
-            let details: Array<[String: String]> = createDetailsForOompaLoompa(oompaLoompa:oompaLoompa)
-            
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let detailViewController: OompaLoompaDetailTableViewController = storyBoard.instantiateViewController(withIdentifier: "OompaLoompaDetail") as! OompaLoompaDetailTableViewController
-            
-            detailViewController.details = details
-            detailViewController.oompaLoompaImageLink = oompaLoompa.image
-            
-            navigationController?.pushViewController(detailViewController, animated: true)
-        }
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let detailViewController: OompaLoompaDetailTableViewController = storyBoard.instantiateViewController(withIdentifier: "OompaLoompaDetail") as! OompaLoompaDetailTableViewController
+        
+        detailViewController.details = details
+        detailViewController.oompaLoompaImageLink = oompaLoompa.image
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
+        
         
     }
     
@@ -100,6 +103,78 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         details.append(profession)
 
         return details
+    }
+    
+    
+    // MARK: - UISearchBarDelegate
+    @IBAction func searchIconPressed(_ sender: Any) {
+        
+        if searchBarHeightConstraint.constant == searchBarHeight {
+            hideSearchBar(AndDeleteSearch: false)
+        } else {
+            showSearchBar()
+        }
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.oompaLoompaList = self.oompaLoompaAuxList
+        self.oompaLoompaAuxList = Array()
+        
+        tableView.reloadData()
+        
+        hideSearchBar(AndDeleteSearch: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if let search = searchBar.text {
+            var newList: Array<OompaLoopma> = Array()
+            
+            for oompa in oompaLoompaList {
+                
+                if let oompaLoompa: OompaLoopma = oompa as! OompaLoopma, oompaLoompa.first_name.contains(search) || oompaLoompa.last_name.contains(search) {
+                    newList.append(oompaLoompa)
+                }
+            }
+            let auxList = self.oompaLoompaList
+            self.oompaLoompaList = newList
+            self.oompaLoompaAuxList = auxList
+            self.tableView.reloadData()
+
+        }
+        
+        hideSearchBar(AndDeleteSearch: false)
+    }
+    
+    func showSearchBar() {
+        
+        for view in searchBar.subviews {
+            for subview in view.subviews {
+                if let button = subview as? UIButton {
+                    button.isEnabled = true
+                }
+            }
+        }
+        
+        searchBarHeightConstraint.constant = searchBarHeight
+        UIView.animate(withDuration: 0.4) {
+            self.view.layoutIfNeeded()
+        }
+        searchBar.becomeFirstResponder()
+    }
+    
+    func hideSearchBar(AndDeleteSearch delete: Bool) {
+        
+        view.endEditing(true)
+        searchBarHeightConstraint.constant = 0
+        if delete {
+            searchBar.text = ""
+        }
+        UIView.animate(withDuration: 0.4) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     

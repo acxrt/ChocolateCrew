@@ -53,9 +53,7 @@ class OompaLoompaDetailTableViewController: UIViewController, UITableViewDelegat
                 cell.contentDetail?.text = value
             }
         }
-        
-
-        
+    
         return cell
         
     }
@@ -63,8 +61,4 @@ class OompaLoompaDetailTableViewController: UIViewController, UITableViewDelegat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
-    
-    
-    
-    
 }
