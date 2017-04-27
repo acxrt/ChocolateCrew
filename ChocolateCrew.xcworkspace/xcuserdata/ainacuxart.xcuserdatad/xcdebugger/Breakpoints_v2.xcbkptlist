@@ -25,8 +25,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChocolateCrew/OompaLoompaTableViewController.swift"
-            timestampString = "515019875.821805"
+            filePath = "ChocolateCrew/OompaLoompaDetailTableViewController.swift"
+            timestampString = "515024086.815879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -41,109 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChocolateCrew/ImageExtensionDownloads.swift"
-            timestampString = "515013768.497392"
+            filePath = "ChocolateCrew/OompaLoompaDetailTableViewController.swift"
+            timestampString = "515024154.173242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "downloadedFrom(url:contentMode:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChocolateCrew/ImageExtensionDownloads.swift"
-            timestampString = "515013775.479281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "downloadedFrom(url:contentMode:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChocolateCrew/ImageExtensionDownloads.swift"
-            timestampString = "515013835.955154"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "downloadedFrom(url:contentMode:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChocolateCrew/ImageExtensionDownloads.swift"
-            timestampString = "515013836.797606"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "downloadedFrom(url:contentMode:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in ChocolateCrew):__ObjC.UIImageView.downloadedFrom (url : Foundation.URL, contentMode : __C.UIViewContentMode) -&gt; ()"
-                  moduleName = "ChocolateCrew"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ainacuxart/Documents/Apps/ChocolateCrew/ChocolateCrew/ImageExtensionDownloads.swift"
-                  timestampString = "515013936.342908"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "505">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in ChocolateCrew):__ObjC.UIImageView.(downloadedFrom (url : Foundation.URL, contentMode : __C.UIViewContentMode) -&gt; ()).(closure #1)"
-                  moduleName = "ChocolateCrew"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ainacuxart/Documents/Apps/ChocolateCrew/ChocolateCrew/ImageExtensionDownloads.swift"
-                  timestampString = "515013936.345901"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChocolateCrew/ImageExtensionDownloads.swift"
-            timestampString = "515013847.199104"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "downloadedFrom(url:contentMode:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

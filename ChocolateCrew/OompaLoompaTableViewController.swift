@@ -61,5 +61,46 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell: OompaLoompaTableViewCell = tableView.cellForRow(at: indexPath) as! OompaLoompaTableViewCell
+        
+        if cell.oLId - 1 > 0 {
+            let oompaLoompa: OompaLoopma = oompaLoompaList[cell.oLId - 1] as! OompaLoopma
+            let details: Array<[String: String]> = createDetailsForOompaLoompa(oompaLoompa:oompaLoompa)
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let detailViewController: OompaLoompaDetailTableViewController = storyBoard.instantiateViewController(withIdentifier: "OompaLoompaDetail") as! OompaLoompaDetailTableViewController
+            
+            detailViewController.details = details
+            detailViewController.oompaLoompaImageLink = oompaLoompa.image
+            
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
+        
+    }
+    
+    func createDetailsForOompaLoompa(oompaLoompa: OompaLoopma) -> Array<[String: String]> {
+        
+        var details: Array<[String: String]> = Array()
+        
+        let firstName: [String: String] = ["first_name": oompaLoompa.first_name]
+        details.append(firstName)
+        
+        let lastName: [String: String] = ["last_name": oompaLoompa.last_name]
+        details.append(lastName)
+        
+        let email: [String: String] = ["email": oompaLoompa.email]
+        details.append(email)
+        
+        let gender: [String: String] = ["gender": oompaLoompa.gender]
+        details.append(gender)
+        
+        let profession: [String: String] = ["profession": oompaLoompa.profession]
+        details.append(profession)
+
+        return details
+    }
+    
     
 }
