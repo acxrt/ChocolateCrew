@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B0A83181EB279F200C4B5DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B0A83171EB279F200C4B5DB /* Localizable.strings */; };
 		8B0A831A1EB27A1C00C4B5DB /* StringExtensionLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0A83191EB27A1C00C4B5DB /* StringExtensionLocalizable.swift */; };
+		8B0A831D1EB2957900C4B5DB /* OompaLoompaDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0A831C1EB2957900C4B5DB /* OompaLoompaDetailTableViewController.swift */; };
+		8B0A831F1EB2978900C4B5DB /* OompaLoompaDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0A831E1EB2978900C4B5DB /* OompaLoompaDetailCell.swift */; };
 		8B6C8DBE1EAE7FFE00DB0B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C8DBD1EAE7FFE00DB0B99 /* AppDelegate.swift */; };
 		8B6C8DC01EAE7FFE00DB0B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C8DBF1EAE7FFE00DB0B99 /* ViewController.swift */; };
 		8B6C8DC31EAE7FFE00DB0B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6C8DC11EAE7FFE00DB0B99 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 		4FE8FF0C0ABC886474D8B6D0 /* Pods-ChocolateCrew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChocolateCrew.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChocolateCrew/Pods-ChocolateCrew.release.xcconfig"; sourceTree = "<group>"; };
 		8B0A83171EB279F200C4B5DB /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8B0A83191EB27A1C00C4B5DB /* StringExtensionLocalizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionLocalizable.swift; sourceTree = "<group>"; };
+		8B0A831C1EB2957900C4B5DB /* OompaLoompaDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OompaLoompaDetailTableViewController.swift; sourceTree = "<group>"; };
+		8B0A831E1EB2978900C4B5DB /* OompaLoompaDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OompaLoompaDetailCell.swift; sourceTree = "<group>"; };
 		8B6C8DBA1EAE7FFE00DB0B99 /* ChocolateCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChocolateCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6C8DBD1EAE7FFE00DB0B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B6C8DBF1EAE7FFE00DB0B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0A831B1EB2955400C4B5DB /* OompaLoompaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8B0A831C1EB2957900C4B5DB /* OompaLoompaDetailTableViewController.swift */,
+				8B0A831E1EB2978900C4B5DB /* OompaLoompaDetailCell.swift */,
+			);
+			name = OompaLoompaDetail;
+			sourceTree = "<group>";
+		};
 		8B6C8DB11EAE7FFE00DB0B99 = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +90,11 @@
 		8B6C8DBC1EAE7FFE00DB0B99 /* ChocolateCrew */ = {
 			isa = PBXGroup;
 			children = (
+				8B0A831B1EB2955400C4B5DB /* OompaLoompaDetail */,
 				8B9F4EAC1EB2753E006AED41 /* Utils */,
 				8BF6460B1EB14139001EB1B1 /* Services */,
 				8B6C8DF81EAEA29900DB0B99 /* Model */,
-				8B6C8DD41EAE81F700DB0B99 /* OompaLoompaTable */,
+				8B6C8DD41EAE81F700DB0B99 /* OompaLoompaList */,
 				8B6C8DBD1EAE7FFE00DB0B99 /* AppDelegate.swift */,
 				8B6C8DBF1EAE7FFE00DB0B99 /* ViewController.swift */,
 				8B6C8DC11EAE7FFE00DB0B99 /* Main.storyboard */,
@@ -92,13 +106,13 @@
 			path = ChocolateCrew;
 			sourceTree = "<group>";
 		};
-		8B6C8DD41EAE81F700DB0B99 /* OompaLoompaTable */ = {
+		8B6C8DD41EAE81F700DB0B99 /* OompaLoompaList */ = {
 			isa = PBXGroup;
 			children = (
 				8B6C8DD21EAE804E00DB0B99 /* OompaLoompaTableViewController.swift */,
 				8B6C8DD51EAE821100DB0B99 /* OompaLoompaTableViewCell.swift */,
 			);
-			name = OompaLoompaTable;
+			name = OompaLoompaList;
 			sourceTree = "<group>";
 		};
 		8B6C8DF81EAEA29900DB0B99 /* Model */ = {
@@ -275,6 +289,8 @@
 				8B6C8DC61EAE7FFE00DB0B99 /* ChocolateCrew.xcdatamodeld in Sources */,
 				8B6C8DD31EAE804E00DB0B99 /* OompaLoompaTableViewController.swift in Sources */,
 				8BF6460F1EB14169001EB1B1 /* OompaLoompaService.swift in Sources */,
+				8B0A831F1EB2978900C4B5DB /* OompaLoompaDetailCell.swift in Sources */,
+				8B0A831D1EB2957900C4B5DB /* OompaLoompaDetailTableViewController.swift in Sources */,
 				8B6C8DBE1EAE7FFE00DB0B99 /* AppDelegate.swift in Sources */,
 				8B0A831A1EB27A1C00C4B5DB /* StringExtensionLocalizable.swift in Sources */,
 			);

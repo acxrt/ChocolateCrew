@@ -29,7 +29,7 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
             
         })
         
-        headerTitleLabel.text = localizedString("oompa_loompa_table_title")
+        self.navigationItem.title = localizedString("oompa_loompa_table_title")
         
     }
     
@@ -48,17 +48,18 @@ class OompaLoompaTableViewController: UIViewController, UITableViewDelegate, UIT
         let oompaLoompa: OompaLoopma  = oompaLoompaList[indexPath.row] as! OompaLoopma
         
         cell.oLNameLabel.text = "\(oompaLoompa.first_name) \(oompaLoompa.last_name)"
-        cell.imageView?.downloadedFrom(link: oompaLoompa.image)
+        cell.oLImageView?.image = #imageLiteral(resourceName: "Placeholder")
+        cell.oLImageView?.downloadedFrom(link: oompaLoompa.image)
         cell.oLId = oompaLoompa.id
         
         return cell
 
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
     }
+    
     
     
 }
